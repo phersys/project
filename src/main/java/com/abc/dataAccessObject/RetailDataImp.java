@@ -3,7 +3,6 @@ package com.abc.dataAccessObject;
 import java.util.HashMap;
 import java.util.Map;
 import com.abc.RetailModule;
-import com.abc.dataAccessObject.RetailAccessObject;
 
 
 public class RetailDataImp implements RetailAccessObject {
