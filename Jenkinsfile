@@ -18,15 +18,23 @@ node {
         checkout scm
     }
 
-    docker.image('maven:3.9.6-jdk-21').inside {
+    docker.image('maven').inside {
         withMaven() {
             stage('Maven Build') {
-                sh '"$MVN_CMD" clean package'
+                sh '"$MVN_CMD" compile'
             }
 
-            stage('Maven Deploy') {
-                sh '"$MVN_CMD" -DskipTests deploy'
+            stage('Maven Build') {
+                sh '"$MVN_CMD" test'
             }
+
+            stage('Maven Build') {
+                sh '"$MVN_CMD" package'
+            }
+            stage('Maven Build') {
+                sh '"$MVN_CMD" clean install'
+            }
+
         }
 
     }
